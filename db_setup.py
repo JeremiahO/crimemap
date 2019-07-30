@@ -3,12 +3,12 @@ import dbconfig
 
 connection = pymysql.connect(host='localhost',
                              user=dbconfig.db_user,
-                             password=dbconfig.db_password)
+                             passwd=dbconfig.db_password)
 try:
     with connection.cursor() as cursor:
-        sql = "CREATE DATABASE IF NOT EXSISTS crimemap"
+        sql = "CREATE DATABASE IF NOT EXISTS crimemap"
         cursor.execute(sql)
-        sql = """ CREATE TABLE IF NOT EXSISTS crimemap.create(
+        sql = """CREATE TABLE IF NOT EXISTS crimemap.crimes(
         id int NOT NULL AUTO_INCREMENT,
         latitude FLOAT(10, 6),
         longitude FLOAT(10, 6),
@@ -16,7 +16,7 @@ try:
         category VARCHAR(50),
         description VARCHAR(1000),
         update_at TIMESTAMP,
-        primary key (id)
+        PRIMARY KEY (id)
         )"""
         cursor.execute(sql)
         connection.commit()
