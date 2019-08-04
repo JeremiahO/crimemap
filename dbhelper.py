@@ -1,4 +1,4 @@
-import pymysql
+import pymysql.cursors
 import dbconfig
 
 # The four main database operations CRUD - Create. Read. Update. Delete
