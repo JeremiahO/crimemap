@@ -1,4 +1,7 @@
-import pymysql.cursors
+import sys
+sys.path.append("/root/.local/lib/python2.7/site-packages")
+
+import pymysql
 import dbconfig
 
 # The four main database operations CRUD - Create. Read. Update. Delete
