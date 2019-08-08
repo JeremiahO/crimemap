@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/root/.local/lib/python2.7/site-packages")
+#sys.path.append("/root/.local/lib/python2.7/site-packages")
 
 import pymysql
 import dbconfig
