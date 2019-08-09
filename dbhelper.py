@@ -1,7 +1,8 @@
 import sys
-#sys.path.append("/root/.local/lib/python2.7/site-packages")
+# sys.path.append("/root/.local/lib/python2.7/site-packages")
 
 import pymysql
+import pymysql.cursors
 import dbconfig
 
 # The four main database operations CRUD - Create. Read. Update. Delete
@@ -51,6 +52,6 @@ class DBHelper:
             query = "DELETE FROM crimes;"
             with connection.cursor() as cursor:
                 cursor.execute(query)
-                cursor.commit
+                connection.commit()
         finally:
             connection.close()
