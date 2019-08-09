@@ -16,7 +16,9 @@ class DBHelper:
         return pymysql.connect(host='localhost',
                                user=dbconfig.db_user,
                                password=dbconfig.db_password,
-                               db=database)
+                               db=database,
+                               charset='utf8mb4',
+                               cursorclass=pymysql.cursors.DictCursor)
 
     # --- READ --- Read Exsiting Data
 
