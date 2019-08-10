@@ -13,13 +13,16 @@ class DBHelper:
     #   --- CREATE --- Create and Insert New Data
 
     def connect(self, database="crimemap"):
-        return pymysql.connect(host='localhost',
+        try: 
+            conn = pymysql.connect(host='localhost',
                                user=dbconfig.db_user,
                                password=dbconfig.db_password,
                                db=database,
                                charset='utf8mb4',
                                cursorclass=pymysql.cursors.DictCursor)
-
+        except Exception as e: 
+            print(e)
+        return conn
     # --- READ --- Read Exsiting Data
 
     def get_all_inputs(self):
