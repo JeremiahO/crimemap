@@ -12,21 +12,21 @@ class DBHelper:
 
     #   --- CREATE --- Create and Insert New Data
 
-    def connect(self, database="crimemap"):
-        try: 
+    def connects(self, database="crimemap"):
+        try:
             conn = pymysql.connect(host='localhost',
-                               user=dbconfig.db_user,
-                               password=dbconfig.db_password,
-                               db=database,
-                               charset='utf8mb4',
-                               cursorclass=pymysql.cursors.DictCursor)
-        except Exception as e: 
+                                   user=dbconfig.db_user,
+                                   password=dbconfig.db_password,
+                                   db=database,
+                                   charset='utf8mb4',
+                                   cursorclass=pymysql.cursors.DictCursor)
+        except Exception as e:
             print(e)
         return conn
     # --- READ --- Read Exsiting Data
 
     def get_all_inputs(self):
-        connection = self.connect()
+        connection = self.connects()
         try:
             query = "SELECT description FROM crimes;"
             with connection.cursor() as cursor:
@@ -38,7 +38,7 @@ class DBHelper:
     # --- UPDATE --- Modify Existing Data
 
     def add_input(self, data):
-        connection = self.connect()
+        connection = self.connects()
         try:
             # The following introduces a deliberate security flaw. See section on SQL injecton below
             query = "INSERT INTO crimes (description) VALUES ('{}');".format(
@@ -52,7 +52,7 @@ class DBHelper:
     # --- DELETE --- Delete Exsising Data
 
     def clear_all(self):
-        connection = self.connect()
+        connection = self.connects()
         try:
             query = "DELETE FROM crimes;"
             with connection.cursor() as cursor:
