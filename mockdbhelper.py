@@ -3,7 +3,7 @@ class MockDBHelper:
         pass
 
     def get_all_inputs(self):
-        return []
+        return []  # 'billy', 'bobby', 'frank'
 
     def add_input(self, data):
         pass
