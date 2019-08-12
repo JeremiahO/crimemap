@@ -4,6 +4,10 @@ import sys
 import pymysql
 import pymysql.cursors
 import dbconfig
+if dbconfig.test:
+    from mockdbhelper import MockDBHelper as DBHelper
+else:
+    from dbhelper import DBHelper
 
 # The four main database operations CRUD - Create. Read. Update. Delete
 
