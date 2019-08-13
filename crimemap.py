@@ -1,9 +1,18 @@
-from dbhelper import DBHelper
+# from dbhelper import DBHelper
 # from mockdbhelper import MockDBHelper as DBHelper  # For local testing purposes
 
 from flask import Flask
 from flask import render_template
 from flask import request
+import dbconfig
+
+if dbconfig.test:
+    from mockdbhelper import MockDBHelper as DBHelper
+    print("Using mockdbhelper, test: " +
+          str(dbconfig.test))  # For testing purposes
+else:
+    from dbhelper import DBHelper
+    print("Using dbhelper, test: " + str(dbconfig.test))  # For testing purposes
 
 app = Flask(__name__)
 DB = DBHelper()
