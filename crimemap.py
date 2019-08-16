@@ -10,6 +10,7 @@ if dbconfig.test:
     from mockdbhelper import MockDBHelper as DBHelper
     print("Using mockdbhelper, test: " +
           str(dbconfig.test))  # For testing purposes
+    print(dbconfig.gmapsapi)
 else:
     from dbhelper import DBHelper
     print("Using dbhelper, test: " + str(dbconfig.test))  # For testing purposes
