@@ -3,7 +3,7 @@
     <head>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key="+'ADDKEYHERE'+"&callback"
     type="text/javascript"></script>
-
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/style.css') }}" />
     <script type="text/javascript">
         var map;
         var marker;
@@ -28,15 +28,16 @@
                     map: map
                 });
             }
+            document.getElementById('latitude').value = location.lat();
+            document.getElementById('longitude').value = location.lng();
         }
     </script>
     
     </head>
         <body onload="initialize()">
-        <div id="map-canvas" style="width:80%; height:500px;"></div>
         <h1>CrimeMap</h2>
         <p>A map of recent criminal activity in the Gahamstown area.</p>
-        <div id ="map-canvas" style="width: 70%; height:500px"></div>
+        <div id ="map-canvas"></div>
 
         <div id="newcrimeform">
         <h2>Submit new crime</h2>
@@ -50,5 +51,12 @@
         <input name="date" id="date" type="date">
         <lable for="latitude">Latitude</label>
         <input name"latitude" id="latitude" type="text">
+        <input name="longitude">Longitude</label>
+        <input name"longitude" id="longitude" type"text">
+        <label for="description">Description</label>
+        <textarea name="description" id="description" placeholder="A brief but detailed descriptiom of the crime"></textarea>
+        <input type="submit" value="Submit">
+        </form>
+        </div>
         </body>
 </html>
