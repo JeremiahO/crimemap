@@ -1,20 +1,8 @@
 import sys
-# sys.path.append("/root/.local/lib/python2.7/site-packages")
 
 import pymysql
 import pymysql.cursors
-# from mockdbhelper import MockDBHelper as DBHelper  # For Local testing purposes
 import dbconfig
-
-'''
-if dbconfig.test:
-    from mockdbhelper import MockDBHelper as DBHelper
-    print("Using mockdbhelper, test: " +
-          str(dbconfig.test))  # For testing purposes
-else:
-    from dbhelper import DBHelper
-    print("Using dbhelper, test: " + str(dbconfig.test))  # For testing purposes
-'''
 
 # The four main database operations CRUD - Create. Read. Update. Delete
 
@@ -68,5 +56,20 @@ class DBHelper:
             with connection.cursor() as cursor:
                 cursor.execute(query)
                 connection.commit()
+        finally:
+            connection.close()
+
+    def add_crime(self, category, date, latitude, longitude, description):
+        connection = self.connects()
+        try:
+            query = "INSERT INTO crimes(category, date, latitude,
+                                        longitude, description) \
+                VALUES ( % s, % s, % s, % s, % s)"
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    query, (category, date, latitude, longitude, description))
+                connection.commit()
+        except Exception as e:
+            print(e)
         finally:
             connection.close()
