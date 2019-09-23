@@ -1,3 +1,5 @@
 dbconfig.py
 *.pyc
 db_commands.txt
+crimemapenv
+.vscode/settings.json
